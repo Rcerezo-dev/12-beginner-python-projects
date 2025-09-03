@@ -4,7 +4,6 @@ def game3 ():
     """Juego de Piedra, Papel o Tijeras"""
     def tie():
         """funcion para el empate"""
-        tie 
         if rival== player:
             return True 
     # Inicializamos opciones y elegimos la del rival
@@ -24,10 +23,11 @@ def game3 ():
 
         #informamos de las elecciones
         print ("el rival elige: ", rival, " VS tú eliges: ", player)
-        
+
         #comprobamos las condiciones de victoria, derrota o empate
         if player == rival:
-            print("Empate, juega otra vez.\n")
+            tie()
+            print("¡Empate! Juega de nuevo\n")
             rival = random.choice(opciones)  # el rival cambia de elección
         elif (player == "Piedra" and rival == "Tijeras") \
           or (player == "Papel" and rival == "Piedra") \
