@@ -54,30 +54,32 @@ from words import *
 
 
 def play_hangman():
-    word = random.choice(words).upper()
-    attempts = 8
-    correct_letters = []
-    wrong_letters = []
+    """juego de el ahorcado en inglés"""
+    #Creamos las variables necesarias
+    word = random.choice(words).upper() # selecciona una palabra aleatoria de la lista y la convierte a mayúsculas
+    attempts = 8 # número de intentos permitidos
+    correct_letters = [] # lista para letras correctas
+    wrong_letters = [] # lista para letras incorrectas
 
     print("⚠️ You can type a letter or press Enter to guess the word.")
-    
+    #validamos que el usuario tenga vidas suficientes
     while attempts > 0:
         display_word = [letter if letter in correct_letters else '_' for letter in word]
         print(' '.join(display_word))
-        
+        # Comprobamos si el jugador ha ganado, viendo que la palabra no tenga guiones bajos
         if '_' not in display_word:
             print("🎉 Congratulations! You guessed the word:", word)
             break
-
+        # Pedimos al usuario que ingrese una letra o intente adivinar la palabra completa (para eso, primero debe pulsar enter)
         guess = input("Try a letter or press Enter to guess the word: ").upper()
-
+        #si el usuario pulsa enter, le pedimos que intente adivinar la palabra completa
         if guess == "":
             full_guess = input("Enter your guess for the full word: ").upper()
-            if full_guess == word:
+            if full_guess == word: # el usuario ha adivinado correctamente la palabra completa
                 print("🎉 Amazing! You guessed the word correctly:", word)
                 break
             else:
-                attempts -= 1
+                attempts -= 1# el usuario ha fallado al adivinar la palabra completa y pierde un intento
                 print(f"❌ Wrong guess. Attempts left: {attempts}")
         elif len(guess) == 1 and guess.isalpha():
             if guess in correct_letters or guess in wrong_letters:
