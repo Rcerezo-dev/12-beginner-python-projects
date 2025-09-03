@@ -6,7 +6,7 @@ def game3 ():
     def tie():
         tie 
         if rival== player:
-            return 
+            return True 
     opciones = ["Piedra", "Papel", "Tijeras"]
     rival = random.choice (opciones)
     while True: 
